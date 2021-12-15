@@ -1,0 +1,72 @@
+<template>
+    <article class="slds-card slds-var-m-around_x-small">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </template>
+        <lightning-layout vertical-align="center" class="slds-page-header slds-page-header_record-home">
+            <lightning-layout-item size="1" padding="horizontal-medium">
+                <img src="/assets/slack_Image.png" alt="Slack Logo">
+            </lightning-layout-item>
+            <lightning-layout-item>
+                <div class="slds-text-heading_large">
+                    Configure your Slack Notifications here
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item size="1" padding="horizontal-medium" alignment-bump="left">
+                <img src="/assets/ACC_GT_Dimensional_Purple_RGB_pos.png" alt="Accenture Logo">
+            </lightning-layout-item>
+        </lightning-layout>
+        <template if:true={isReady}>
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="6">
+
+
+                    <lightning-input name="slackchannelid" label="Slack Channel ID" onchange={onslackchannelidchange}
+                        type="text" value={config.slackChannelId}></lightning-input>
+
+                    <lightning-input type="time" name="scheduleStartTime" label="Schedule Time (UTC+0)"
+                        onchange={ontimechange} value={config.scheduleStartTime}>
+                    </lightning-input>
+
+                    <lightning-combobox name="scheduleperiod" label="Frequency" value={config.schedulePeriod}
+                        placeholder="Select Frequency" options={periods} onchange={onscheduleperiodchange}>
+                    </lightning-combobox>
+
+                    <lightning-dual-listbox id="activityTypes" name="activityTypes"
+                        label="Select Activity Types to include" source-label="Available Options"
+                        selected-label="Selected Options" options={config.availableTypes} value={config.selectedTypes}
+                        onchange={handleSelectedTypes}>
+                    </lightning-dual-listbox>
+                    <lightning-dual-listbox id="businessUnits" name="businessUnits"
+                        label="Select Business Units To Track" source-label="Available Options"
+                        selected-label="Selected Options" options={config.availableBusinessUnits}
+                        value={config.selectedBusinessUnits} onchange={handleSelectedBusinessUnits}>
+                    </lightning-dual-listbox>
+                    <lightning-button-group class="slds-p-vertical_small">
+                        <lightning-button variant="brand" label="Save" title="Save Settings" onclick={saveConfig}
+                            class="slds-m-left_x-small"></lightning-button>
+                    </lightning-button-group>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6">
+                    <div class="slds-text-heading_medium slds-align_absolute-center">
+                        Here be Dragons!
+                    </div>
+
+                    <lightning-layout class="slds-box">
+                        <lightning-layout-item padding="around-small">
+                            Force a refresh data from the last 30 days (last synced date: {config.lastSynced})
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-small" alignment-bump="left">
+                            <lightning-button variant="destructive" label="Force Resync" title="Resync the last 30 Days"
+                                onclick={handleForceResync} class="slds-m-left_x-small"></lightning-button>
+                        </lightning-layout-item>
+                    </lightning-layout>
+
+
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </template>
+
+    </article>
+</template>

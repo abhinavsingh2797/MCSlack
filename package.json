@@ -1,0 +1,87 @@
+{
+    "name": "sfmc2slack",
+    "description": "Custom Application that integrates Marketing Cloud with Slack",
+    "version": "0.0.1",
+    "author": "Accenture",
+    "bugs": {
+        "url": "https://github.com/asilva102/sfmc2slack/issues"
+    },
+    "homepage": "https://github.com/asilva102/sfmc2slack#readme",
+    "dependencies": {
+        "@slack/bolt": "^3.7.0",
+        "@slack/web-api": "^6.4.0",
+        "axios": "^0.22.0",
+        "body-parser": "^1.19.0",
+        "compression": "^1.7.4",
+        "connect-redis": "^6.0.0",
+        "csurf": "^1.11.0",
+        "csvtojson": "^2.0.10",
+        "express": "^4.17.1",
+        "express-rate-limit": "^5.4.1",
+        "express-session": "^1.17.2",
+        "google-libphonenumber": "^3.2.24",
+        "helmet": "^4.6.0",
+        "ioredis": "^4.27.10",
+        "jsforce": "^1.10.1",
+        "jsonwebtoken": "^8.5.1",
+        "moment": "^2.29.1",
+        "morgan": "^1.10.0",
+        "node-schedule": "^2.0.0",
+        "pg-promise": "^10.11.0",
+        "rate-limit-redis": "^2.1.0",
+        "sfmc-sdk": "^0.0.5",
+        "winston": "^3.3.3",
+        "xml2js": "^0.4.23"
+    },
+    "devDependencies": {
+        "@lwc/synthetic-shadow": "^2.5.3",
+        "@salesforce-ux/design-system": "^2.16.2",
+        "clean-webpack-plugin": "^4.0.0",
+        "copy-webpack-plugin": "^9.0.1",
+        "dotenv": "^10.0.0",
+        "eslint": "^7.32.0",
+        "eslint-plugin-inclusive-language": "^2.1.1",
+        "html-webpack-plugin": "^5.3.2",
+        "lightning-base-components": "^1.13.6-alpha",
+        "lwc-services": "^3.2.1",
+        "lwc-webpack-plugin": "^2.1.0",
+        "npm-run-all": "^4.1.5",
+        "postmonger": "0.0.16",
+        "prettier": "^2.4.1",
+        "webpack": "5.58.0",
+        "webpack-cli": "^4.9.0"
+    },
+    "engines": {
+        "node": ">=14.15.0",
+        "npm": ">=6.14.8"
+    },
+    "keywords": [
+        "lwc",
+        "customapp",
+        "sfmc",
+        "slack"
+    ],
+    "license": "Apache-2.0",
+    "nodemonConfig": {
+        "watch": [
+            "src/server/**/*.js"
+        ],
+        "ext": "js",
+        "ignore": [
+            "src/**/*.spec.js",
+            "src/**/*.test.js"
+        ],
+        "exec": "node ./src/server/app.js"
+    },
+    "repository": "https://github.com/Accenture/sfmc-customapp",
+    "scripts": {
+        "build": "webpack --config webpack.config.js",
+        "build:cert": "cd certificates && buildCert.bat",
+        "lint": "eslint -c .eslintrc.json",
+        "watch": "run-p watch:client watch:server",
+        "watch:client": "webpack --watch --config webpack.config.js --progress",
+        "watch:server": "nodemon",
+        "start": "node src/server/app.js",
+        "prettier": "prettier --write \"**/*.js\""
+    }
+}
