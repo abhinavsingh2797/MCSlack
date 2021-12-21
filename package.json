@@ -73,7 +73,7 @@
         ],
         "exec": "node ./src/server/app.js"
     },
-    "repository": "https://github.com/abhinavsingh2797/MCCloudSlack.git",
+    "repository": "https://github.com/abhinavsingh2797/MCSlack.git",
     "scripts": {
         "build": "webpack --config webpack.config.js",
         "dev": "webpack serve",

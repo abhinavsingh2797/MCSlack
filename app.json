@@ -1,7 +1,7 @@
 {
     "name": "SFMC-LWCActivity",
     "description": "An example custom app/activity for herokyy",
-    "repository": "https://github.com/Accenture/sfmc-customapp",
+    "repository": "https://github.com/abhinavsingh2797/MCSlack.git",
     "logo": "https://www.accenture.com/_acnmedia/Thought-Leadership-Assets/Images/mainpage/Accenture-acn-mobile-logo-2",
     "keywords": [
         "node",
